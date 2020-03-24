@@ -1,19 +1,37 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <title-bar :title="title" />
+    <nav-bar :nav_list="list" />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
+<script>
+import navbar_router_link from "@/components/navbar_router_link";
+import header from "@/components/header";
+export default {
+  name: "app",
+  components: { "nav-bar": navbar_router_link, "title-bar": header },
+  props: {},
+  data() {
+    return {
+      list: [
+        { name: "电影", route_path: "/Home" },
+        { name: "影院", route_path: "/About" },
+        { name: "我的", route_path: "/user" }
+      ],
+      title: "喵喵电影"
+    };
+  },
+  computed: {},
+  watch: {},
+  created() {},
+  mounted() {},
+  methods: {
+    router_push() {}
+  }
+};
+</script>
+<style lang="stylus" scoped></style>
